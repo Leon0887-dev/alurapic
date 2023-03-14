@@ -7,7 +7,7 @@ import { Alert, AlertType } from '../shared/components/alert/alert';
 })
 export class AlertService {
 
-  alertSubject: Subject<Alert>
+  alertSubject: Subject<Alert> = new Subject<Alert>();
 
   constructor() { }
 
@@ -32,7 +32,7 @@ export class AlertService {
   }
 
   getAlert(){
-    this.alertSubject.asObservable();
+    return this.alertSubject.asObservable();
   }
 
 }
