@@ -10,7 +10,7 @@ import { Alert, AlertType } from './alert';
 export class AlertComponent implements OnInit {
 
   @Input() timeout = 3000;
-  alerts: Alert[];
+  alerts: Alert[] = [];
 
   constructor(private alertService: AlertService) { 
 
@@ -30,7 +30,7 @@ export class AlertComponent implements OnInit {
   }
   
   removeAlert(alertToRemove: Alert) {
-    this.alerts = this.alerts.filter(alert => alert !== alertToRemove);
+    this.alerts = this.alerts.filter(alert => alert != alertToRemove);
   } 
 
   getAlertClass(alert: Alert){
