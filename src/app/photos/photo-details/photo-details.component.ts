@@ -5,7 +5,6 @@ import { PhotosService } from 'src/app/service/photos.service';
 import { Photo } from 'src/app/interfaces/photo';
 import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/service/alert.service';
-import { truncateSync } from 'fs';
 import { UserService } from 'src/app/core/user/user.service';
 
 @Component({
