@@ -5,6 +5,8 @@ import { PhotosService } from 'src/app/service/photos.service';
 import { Photo } from 'src/app/interfaces/photo';
 import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/service/alert.service';
+import { truncateSync } from 'fs';
+import { UserService } from 'src/app/core/user/user.service';
 
 @Component({
   selector: 'app-photo-details',
@@ -21,7 +23,8 @@ export class PhotoDetailsComponent implements OnInit {
     private route: ActivatedRoute, 
     private photosService: PhotosService,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private userService: UserService
     ) { }
 
   ngOnInit() {
@@ -32,12 +35,12 @@ export class PhotoDetailsComponent implements OnInit {
 
   remove(){
     this.photosService.removePhoto(this.photoId).subscribe(() =>{
-        this.alertService.success("photo removed")
-        this.router.navigate(['']);
+        this.alertService.success("photo removed", true)
+        this.router.navigate(['/user', this.userService.getUserName()]);
     },
     err =>{
       console.log(err);
-      this.alertService.warning('Could not delete the photo!')
+      this.alertService.warning('Could not delete the photo!', true)
     }
     
     )
