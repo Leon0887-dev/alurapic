@@ -37,7 +37,7 @@ export class PhotoDetailsComponent implements OnInit {
     })
   }
 
-  remove(){
+  remove(): void{
     this.photosService.removePhoto(this.photoId).subscribe(() =>{
         this.alertService.success("photo removed", true)
         this.router.navigate(['/user', this.userService.getUserName()]);
@@ -48,6 +48,16 @@ export class PhotoDetailsComponent implements OnInit {
     }
     
     )
+  }
+
+  like(photo: Photo): void{
+    this.photosService
+      .like(photo.id)
+      .subscribe(liked =>{
+        if(liked){
+          this.photo$ = this.photosService.findById(photo.id);
+        }
+      })
   }
 
 
