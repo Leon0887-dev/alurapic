@@ -19,10 +19,16 @@ const routes: Routes = [
             {
                 path: '',
                 component: SigninComponent,
+                data:{
+                    title:'Sign in',
+                  }
             },
             {
                 path: 'singup',
-                component: SingupComponent
+                component: SingupComponent,
+                data:{
+                    title:'Sign up',
+                  }
             },
         ]
     },
